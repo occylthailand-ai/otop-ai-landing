@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OTOP-AI × OpenThaiAi — แพลตฟอร์มเดียว ครบทุกวงจรสินค้าไทย</title>
+<meta name="description" content="OTOP-AI คือทางเข้าสู่ OpenThaiAi แพลตฟอร์มที่รวมผู้ผลิต OTOP/SME ผู้บริโภค คนกลาง/ตัวแทนจำหน่าย ครีเอเตอร์ และ Affiliate ไว้ในที่เดียว พร้อมเครื่องมือ AI ช่วยขาย ระบบชำระเงินไทย และการสมัครที่โปร่งใสตาม PDPA">
+<meta property="og:title" content="OTOP-AI × OpenThaiAi">
+<meta property="og:description" content="แพลตฟอร์มเดียว ครบทุกวงจรสินค้าไทย — ผู้ผลิต ผู้บริโภค คนกลาง ครีเอเตอร์ Affiliate">
+<meta property="og:image" content="logo.png">
+<meta property="og:type" content="website">
+<link rel="icon" href="logo.png">
+<style>
+  :root {
+    --bg: #06070d;
+    --bg-card: rgba(255,255,255,0.04);
+    --border: rgba(255,255,255,0.09);
+    --text: #f4f6fb;
+    --text-dim: #9aa3b8;
+    --accent: #22d3ee;
+    --accent-2: #a78bfa;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, "Segoe UI", "Noto Sans Thai", "Sarabun", Tahoma, sans-serif;
+    background: radial-gradient(1200px 600px at 50% -10%, #101433 0%, var(--bg) 55%);
+    color: var(--text);
+    line-height: 1.7;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 24px; max-width: 1080px; margin: 0 auto;
+  }
+  header .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; }
+  header img.logo { height: 34px; width: auto; border-radius: 8px; }
+  header nav a {
+    text-decoration: none; color: var(--text-dim); font-size: 14px; margin-left: 22px;
+  }
+  .btn {
+    display: inline-block; padding: 12px 22px; border-radius: 999px; font-weight: 700;
+    font-size: 14px; text-decoration: none; border: 1px solid transparent; transition: transform .15s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #06070d; }
+  .btn-ghost { border-color: var(--border); color: var(--text); }
+  .hero {
+    text-align: center; padding: 64px 24px 40px; max-width: 780px; margin: 0 auto;
+  }
+  .hero img.hero-logo { height: 84px; width: auto; margin-bottom: 22px; border-radius: 18px; }
+  .hero h1 { font-size: clamp(28px, 5vw, 46px); font-weight: 900; letter-spacing: -0.02em; }
+  .hero h1 span { background: linear-gradient(135deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero p { color: var(--text-dim); font-size: 17px; margin: 18px auto 30px; max-width: 620px; }
+  .hero .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  section { padding: 56px 24px; }
+  section h2 { font-size: 26px; font-weight: 800; text-align: center; margin-bottom: 8px; }
+  section .lead { text-align: center; color: var(--text-dim); font-size: 15px; margin-bottom: 36px; }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; max-width: 1000px; margin: 0 auto;
+  }
+  .card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 22px;
+  }
+  .card .icon { font-size: 26px; margin-bottom: 10px; }
+  .card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .card p { color: var(--text-dim); font-size: 13.5px; }
+  .roles {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; max-width: 1000px; margin: 0 auto;
+  }
+  .role-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 22px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .role-card .icon { font-size: 30px; }
+  .role-card h3 { font-size: 16px; font-weight: 800; }
+  .role-card p { color: var(--text-dim); font-size: 13px; flex: 1; }
+  .role-card a { font-size: 13px; font-weight: 700; color: var(--accent); text-decoration: none; }
+  .steps { max-width: 720px; margin: 0 auto; }
+  .step { display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .step:last-child { border-bottom: none; }
+  .step .num {
+    flex-shrink: 0; width: 34px; height: 34px; border-radius: 10px; background: var(--bg-card);
+    border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--accent);
+  }
+  .step h4 { font-size: 15px; font-weight: 700; }
+  .step p { color: var(--text-dim); font-size: 13.5px; }
+  .final-cta {
+    text-align: center; padding: 60px 24px; background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  }
+  .final-cta h2 { font-size: 26px; margin-bottom: 10px; }
+  .final-cta p { color: var(--text-dim); margin-bottom: 26px; }
+  footer { text-align: center; padding: 32px 24px; color: var(--text-dim); font-size: 13px; }
+  footer a { color: var(--text-dim); text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand"><img class="logo" src="logo.png" alt="OTOP-AI"> OTOP-AI</div>
+  <nav>
+    <a href="#roles">เข้าร่วมกับใครดี</a>
+    <a href="#how">วิธีสมัคร</a>
+    <a href="https://www.openthai-ai.com" class="btn btn-ghost" style="margin-left:22px;">ไปที่ OpenThaiAi →</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <img class="hero-logo" src="logo.png" alt="OTOP-AI logo">
+  <h1>สินค้าไทย <span>ครบวงจร</span> ในแพลตฟอร์มเดียว</h1>
+  <p>OTOP-AI คือทางเข้าสู่ <strong>OpenThaiAi</strong> — แพลตฟอร์มที่รวมผู้ผลิต OTOP/SME ผู้บริโภค คนกลาง/ตัวแทนจำหน่าย ครีเอเตอร์ และ Affiliate ไว้ในที่เดียว พร้อมเครื่องมือ AI ช่วยขาย และระบบสมัครที่โปร่งใส ยินยอมตาม PDPA ทุกขั้นตอน</p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="https://www.openthai-ai.com/portals">เริ่มสมัครเข้าร่วม</a>
+    <a class="btn btn-ghost" href="#roles">ดูว่าเหมาะกับใคร</a>
+  </div>
+</div>
+
+<section id="what">
+  <h2>สิ่งที่คุณได้จริงเมื่อเข้าร่วม</h2>
+  <p class="lead">ไม่ใช่แค่สมัครแล้วรอ — ทุกใบสมัครเข้าสู่ระบบจริงทันที</p>
+  <div class="grid">
+    <div class="card"><div class="icon">🤖</div><h3>เครื่องมือ AI ช่วยขาย</h3><p>สร้างคอนเทนต์ เขียนคำโฆษณา วิเคราะห์เทรนด์ แปลภาษา และวางแผนแคมเปญ ด้วยชุดเครื่องมือ AI ของแพลตฟอร์ม</p></div>
+    <div class="card"><div class="icon">💳</div><h3>รับเงินแบบไทย</h3><p>รองรับ PromptPay และบัตรเครดิต/เดบิตผ่าน Omise เหมาะกับผู้ซื้อผู้ขายในไทยโดยเฉพาะ</p></div>
+    <div class="card"><div class="icon">🔐</div><h3>โปร่งใส ยินยอมตาม PDPA</h3><p>ทุกฟอร์มสมัครมีการขอความยินยอมตามกฎหมายคุ้มครองข้อมูลส่วนบุคคล ไม่มีการเก็บข้อมูลโดยไม่ได้รับอนุญาต</p></div>
+    <div class="card"><div class="icon">🌏</div><h3>รองรับหลายภาษา</h3><p>หน้าสมัครและระบบรองรับภาษาไทย อังกฤษ และจีน เปิดทางสู่ผู้ซื้อและพันธมิตรต่างประเทศ</p></div>
+  </div>
+</section>
+
+<section id="roles">
+  <h2>เข้าร่วมในบทบาทที่ใช่</h2>
+  <p class="lead">เลือกสมัครตามบทบาทของคุณ — ทุกใบสมัครถูกบันทึกเข้าระบบจริงทันที</p>
+  <div class="roles">
+    <div class="role-card">
+      <div class="icon">🏭</div>
+      <h3>ผู้ผลิต OTOP / SME</h3>
+      <p>ลงสินค้า ตั้งราคา จัดการสต๊อก และเข้าถึงลูกค้าทั่วประเทศ</p>
+      <a href="https://www.openthai-ai.com/portals/producer">สมัครเป็นผู้ผลิต →</a>
+    </div>
+    <div class="role-card">
+      <div class="icon">🛍️</div>
+      <h3>ผู้บริโภค</h3>
+      <p>รับส่วนลดเฉพาะสมาชิกและสินค้าใหม่จากผู้ผลิตที่ผ่านการรับรอง</p>
+      <a href="https://www.openthai-ai.com/portals/consumer">สมัครเป็นผู้บริโภค →</a>
+    </div>
+    <div class="role-card">
+      <div class="icon">🤝</div>
+      <h3>คนกลาง / ตัวแทนจำหน่าย</h3>
+      <p>ราคาส่งพิเศษและการเชื่อมต่อกับผู้ผลิตโดยตรง ไม่ผ่านคนกลางซ้ำซ้อน</p>
+      <a href="https://www.openthai-ai.com/portals/middleman">สมัครเป็นคนกลาง →</a>
+    </div>
+    <div class="role-card">
+      <div class="icon">🎬</div>
+      <h3>ครีเอเตอร์</h3>
+      <p>ร่วมสร้างคอนเทนต์ด้วยเครื่องมือ AI จากทุกแพลตฟอร์มโซเชียล</p>
+      <a href="https://www.openthai-ai.com/portals/creator">สมัครเป็นครีเอเตอร์ →</a>
+    </div>
+    <div class="role-card">
+      <div class="icon">💰</div>
+      <h3>Affiliate</h3>
+      <p>รับลิงก์ติดตามและค่าคอมมิชชันจริงจากทุกยอดขายที่ปิดผ่านลิงก์ของคุณ</p>
+      <a href="https://www.openthai-ai.com/portals/affiliate">สมัครเป็น Affiliate →</a>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <h2>วิธีสมัคร</h2>
+  <div class="steps">
+    <div class="step"><div class="num">1</div><div><h4>เลือกบทบาทของคุณ</h4><p>ผู้ผลิต ผู้บริโภค คนกลาง ครีเอเตอร์ หรือ Affiliate</p></div></div>
+    <div class="step"><div class="num">2</div><div><h4>กรอกฟอร์มสมัคร</h4><p>ข้อมูลของคุณถูกบันทึกเข้าระบบจริงทันที พร้อมการยินยอมตาม PDPA</p></div></div>
+    <div class="step"><div class="num">3</div><div><h4>รับอีเมลยืนยัน</h4><p>ระบบส่งอีเมลยืนยันการสมัครทันที และทีมงานจะติดต่อกลับตามขั้นตอนของแต่ละบทบาท</p></div></div>
+    <div class="step"><div class="num">4</div><div><h4>เริ่มใช้งานแพลตฟอร์ม</h4><p>เข้าสู่ OpenThaiAi เพื่อจัดการสินค้า ติดตามยอดขาย หรือเริ่มสร้างคอนเทนต์</p></div></div>
+  </div>
+</section>
+
+<div class="final-cta">
+  <h2>พร้อมเข้าร่วมหรือยัง?</h2>
+  <p>สมัครวันนี้ เข้าสู่ระบบจริงทันที ไม่มีคิวรอ</p>
+  <a class="btn btn-primary" href="https://www.openthai-ai.com/portals">ไปที่หน้าสมัคร →</a>
+</div>
+
+<footer>
+  <p>© 2026 OTOP-AI · ขับเคลื่อนโดย <a href="https://www.openthai-ai.com">OpenThaiAi</a></p>
+  <p><a href="https://www.openthai-ai.com/privacy">นโยบายความเป็นส่วนตัว (PDPA)</a></p>
+</footer>
+
+</body>
+</html>
