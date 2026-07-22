@@ -98,7 +98,7 @@
     flex-shrink: 0; width: 34px; height: 34px; border-radius: 10px; background: var(--bg-card);
     border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--accent);
   }
-  .step h4 { font-size: 15px; font-weight: 700; }
+  .step h3 { font-size: 15px; font-weight: 700; }
   .step p { color: var(--text-dim); font-size: 13.5px; }
   .final-cta {
     text-align: center; padding: 60px 24px; background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
@@ -115,6 +115,22 @@
     .btn:hover { transform: none; }
   }
 </style>
+<!-- Organization structured data: OTOP-AI is the gateway microsite for the OpenThaiAi
+     platform, so the entity described is OpenThaiAi. All URLs are absolute and point at
+     the platform's own stable domain + an asset it already serves (icon-512.png), so this
+     needs no decision about OTOP-AI's own production domain. Makes the shared landing
+     eligible for rich-results / knowledge-panel signals the bare page couldn't earn. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "OpenThaiAi",
+  "alternateName": "OTOP-AI × OpenThaiAi",
+  "url": "https://www.openthai-ai.com",
+  "logo": "https://www.openthai-ai.com/icon-512.png",
+  "description": "แพลตฟอร์มที่รวมผู้ผลิต OTOP/SME ผู้บริโภค คนกลาง/ตัวแทนจำหน่าย ครีเอเตอร์ และ Affiliate ไว้ในที่เดียว พร้อมเครื่องมือ AI ช่วยขาย ระบบชำระเงินไทย และการสมัครที่โปร่งใสตาม PDPA"
+}
+</script>
 </head>
 <body>
 
@@ -188,10 +204,10 @@
 <section id="how">
   <h2>วิธีสมัคร</h2>
   <div class="steps">
-    <div class="step"><div class="num">1</div><div><h4>เลือกบทบาทของคุณ</h4><p>ผู้ผลิต ผู้บริโภค คนกลาง ครีเอเตอร์ หรือ Affiliate</p></div></div>
-    <div class="step"><div class="num">2</div><div><h4>กรอกฟอร์มสมัคร</h4><p>ข้อมูลของคุณถูกบันทึกเข้าระบบจริงทันที พร้อมการยินยอมตาม PDPA</p></div></div>
-    <div class="step"><div class="num">3</div><div><h4>รับอีเมลยืนยัน</h4><p>ระบบส่งอีเมลยืนยันการสมัครทันที และทีมงานจะติดต่อกลับตามขั้นตอนของแต่ละบทบาท</p></div></div>
-    <div class="step"><div class="num">4</div><div><h4>เริ่มใช้งานแพลตฟอร์ม</h4><p>เข้าสู่ OpenThaiAi เพื่อจัดการสินค้า ติดตามยอดขาย หรือเริ่มสร้างคอนเทนต์</p></div></div>
+    <div class="step"><div class="num">1</div><div><h3>เลือกบทบาทของคุณ</h3><p>ผู้ผลิต ผู้บริโภค คนกลาง ครีเอเตอร์ หรือ Affiliate</p></div></div>
+    <div class="step"><div class="num">2</div><div><h3>กรอกฟอร์มสมัคร</h3><p>ข้อมูลของคุณถูกบันทึกเข้าระบบจริงทันที พร้อมการยินยอมตาม PDPA</p></div></div>
+    <div class="step"><div class="num">3</div><div><h3>รับอีเมลยืนยัน</h3><p>ระบบส่งอีเมลยืนยันการสมัครทันที และทีมงานจะติดต่อกลับตามขั้นตอนของแต่ละบทบาท</p></div></div>
+    <div class="step"><div class="num">4</div><div><h3>เริ่มใช้งานแพลตฟอร์ม</h3><p>เข้าสู่ OpenThaiAi เพื่อจัดการสินค้า ติดตามยอดขาย หรือเริ่มสร้างคอนเทนต์</p></div></div>
   </div>
 </section>
 
