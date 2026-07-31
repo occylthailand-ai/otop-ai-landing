@@ -123,6 +123,15 @@
     .btn { transition: none; }
     .btn:hover { transform: none; }
   }
+  /* Skip link (WCAG 2.4.1 Bypass Blocks): a keyboard/screen-reader user can jump past the
+     header straight to <main>. Off-screen until focused, then visible at the top-left. */
+  .skip-link {
+    position: absolute; left: 8px; top: -48px; z-index: 100;
+    background: var(--accent); color: #06070d; padding: 10px 16px; border-radius: 8px;
+    font-weight: 700; text-decoration: none; transition: top .15s ease;
+  }
+  .skip-link:focus { top: 8px; outline: 2px solid var(--text); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { .skip-link { transition: none; } }
 </style>
 <!-- Organization structured data: OTOP-AI is the gateway microsite for the OpenThaiAi
      platform, so the entity described is OpenThaiAi. All URLs are absolute and point at
@@ -143,14 +152,18 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">ข้ามไปยังเนื้อหาหลัก</a>
+
 <header>
-  <div class="brand"><img class="logo" src="/logo.webp" alt="OTOP-AI"> OTOP-AI</div>
+  <div class="brand"><img class="logo" src="/logo.webp" alt=""> OTOP-AI</div>
   <nav>
     <a href="#roles">เข้าร่วมกับใครดี</a>
     <a href="#how">วิธีสมัคร</a>
     <a href="https://www.openthai-ai.com" class="btn btn-ghost" style="margin-left:22px;">ไปที่ OpenThaiAi →</a>
   </nav>
 </header>
+
+<main id="main">
 
 <div class="hero">
   <img class="hero-logo" src="/logo.webp" alt="OTOP-AI logo">
@@ -225,6 +238,8 @@
   <p>สมัครวันนี้ เข้าสู่ระบบจริงทันที ไม่มีคิวรอ</p>
   <a class="btn btn-primary" href="https://www.openthai-ai.com/portals">ไปที่หน้าสมัคร →</a>
 </div>
+
+</main>
 
 <footer>
   <p>© 2026 OTOP-AI · ขับเคลื่อนโดย <a href="https://www.openthai-ai.com">OpenThaiAi</a></p>
