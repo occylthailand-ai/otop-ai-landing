@@ -8,6 +8,14 @@
 <link rel="preconnect" href="https://www.openthai-ai.com">
 <link rel="dns-prefetch" href="https://www.openthai-ai.com">
 <title>OTOP-AI × OpenThaiAi — แพลตฟอร์มเดียว ครบทุกวงจรสินค้าไทย</title>
+<!-- vercel.json routes /(.*) → index.html, so EVERY path (e.g. /producer, /x?y=z) serves this same
+     single page. Without a canonical, a crawler can index those catch-all variants as duplicate
+     content. A RELATIVE self-referential canonical collapses every variant to the site root: the
+     crawler resolves "/" against the page's own origin, so it works on the Vercel preview domain AND
+     on the final production domain without hardcoding either (that domain is still owner-pending —
+     same reason og:image points at the already-hosted OpenThaiAi image above). -->
+<link rel="canonical" href="/">
+<meta name="robots" content="index, follow">
 <meta name="description" content="OTOP-AI คือทางเข้าสู่ OpenThaiAi แพลตฟอร์มที่รวมผู้ผลิต OTOP/SME ผู้บริโภค คนกลาง/ตัวแทนจำหน่าย ครีเอเตอร์ และ Affiliate ไว้ในที่เดียว พร้อมเครื่องมือ AI ช่วยขาย ระบบชำระเงินไทย และการสมัครที่โปร่งใสตาม PDPA">
 <meta property="og:site_name" content="OTOP-AI × OpenThaiAi">
 <meta property="og:title" content="OTOP-AI × OpenThaiAi">
