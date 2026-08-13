@@ -34,7 +34,12 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="OTOP-AI × OpenThaiAi — แพลตฟอร์มสินค้าไทยครบวงจร">
 <meta property="og:type" content="website">
+<!-- Thai is the primary/default locale (matches the static HTML lang="th"); the page also serves EN
+     and ZH via the in-page switcher, so declare them as alternates. Social/search crawlers (LINE and
+     Facebook first in Thailand, plus X) use these to know the same URL is available in those locales. -->
 <meta property="og:locale" content="th_TH">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="OTOP-AI × OpenThaiAi">
 <meta name="twitter:description" content="แพลตฟอร์มเดียว ครบทุกวงจรสินค้าไทย — ผู้ผลิต ผู้บริโภค คนกลาง ครีเอเตอร์ Affiliate">
@@ -448,6 +453,7 @@
   };
 
   var LANGS = { th: "th", en: "en", zh: "zh" };
+  var OG_LOCALE = { th: "th_TH", en: "en_US", zh: "zh_CN" };
   var buttons = document.querySelectorAll(".lang-switch button");
 
   function applyLang(lang) {
@@ -465,6 +471,10 @@
     if (dict._title) document.title = dict._title;
     var md = document.querySelector('meta[name="description"]');
     if (md && dict._desc) md.setAttribute("content", dict._desc);
+    // Keep the primary og:locale in step with the shown language (crawlers read the static tag before
+    // JS runs, so the default stays th_TH; this only matters for dynamic/social-preview renderers).
+    var ogl = document.querySelector('meta[property="og:locale"]');
+    if (ogl && OG_LOCALE[lang]) ogl.setAttribute("content", OG_LOCALE[lang]);
     buttons.forEach(function (b) {
       b.setAttribute("aria-pressed", b.getAttribute("data-lang") === lang ? "true" : "false");
     });
