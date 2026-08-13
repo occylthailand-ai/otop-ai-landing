@@ -140,6 +140,17 @@
   }
   .skip-link:focus { top: 8px; outline: 2px solid var(--text); outline-offset: 2px; }
   @media (prefers-reduced-motion: reduce) { .skip-link { transition: none; } }
+  /* Language switcher (TH / EN / 中文). Thai is the static HTML default so crawlers and
+     no-JS visitors always see fully-rendered Thai; the buttons re-render text client-side
+     and remember the choice in localStorage. */
+  .lang-switch { display: inline-flex; gap: 4px; margin-left: 22px; vertical-align: middle; }
+  .lang-switch button {
+    background: transparent; border: 1px solid var(--border); color: var(--text-dim);
+    font: inherit; font-size: 12px; font-weight: 700; line-height: 1; padding: 6px 9px;
+    border-radius: 8px; cursor: pointer;
+  }
+  .lang-switch button:hover { color: var(--text); }
+  .lang-switch button[aria-pressed="true"] { background: var(--bg-card); color: var(--accent); border-color: var(--accent); }
 </style>
 <!-- Organization structured data: OTOP-AI is the gateway microsite for the OpenThaiAi
      platform, so the entity described is OpenThaiAi. All URLs are absolute and point at
@@ -169,14 +180,19 @@
 </head>
 <body>
 
-<a class="skip-link" href="#main">ข้ามไปยังเนื้อหาหลัก</a>
+<a class="skip-link" href="#main" data-i18n="skip">ข้ามไปยังเนื้อหาหลัก</a>
 
 <header>
   <div class="brand"><img class="logo" src="/logo.webp" alt=""> OTOP-AI</div>
   <nav>
-    <a href="#roles">เข้าร่วมกับใครดี</a>
-    <a href="#how">วิธีสมัคร</a>
-    <a href="https://www.openthai-ai.com" class="btn btn-ghost" style="margin-left:22px;">ไปที่ OpenThaiAi →</a>
+    <a href="#roles" data-i18n="nav.roles">เข้าร่วมกับใครดี</a>
+    <a href="#how" data-i18n="nav.how">วิธีสมัคร</a>
+    <span class="lang-switch" role="group" aria-label="เลือกภาษา / Language">
+      <button type="button" data-lang="th" aria-pressed="true">TH</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      <button type="button" data-lang="zh" aria-pressed="false">中文</button>
+    </span>
+    <a href="https://www.openthai-ai.com" class="btn btn-ghost" style="margin-left:22px;" data-i18n="nav.goto">ไปที่ OpenThaiAi →</a>
   </nav>
 </header>
 
@@ -184,84 +200,285 @@
 
 <div class="hero">
   <img class="hero-logo" src="/logo.webp" alt="OTOP-AI logo">
-  <h1>สินค้าไทย <span>ครบวงจร</span> ในแพลตฟอร์มเดียว</h1>
-  <p>OTOP-AI คือทางเข้าสู่ <strong>OpenThaiAi</strong> — แพลตฟอร์มที่รวมผู้ผลิต OTOP/SME ผู้บริโภค คนกลาง/ตัวแทนจำหน่าย ครีเอเตอร์ และ Affiliate ไว้ในที่เดียว พร้อมเครื่องมือ AI ช่วยขาย และระบบสมัครที่โปร่งใส ยินยอมตาม PDPA ทุกขั้นตอน</p>
+  <h1 data-i18n-html="hero.h1">สินค้าไทย <span>ครบวงจร</span> ในแพลตฟอร์มเดียว</h1>
+  <p data-i18n-html="hero.p">OTOP-AI คือทางเข้าสู่ <strong>OpenThaiAi</strong> — แพลตฟอร์มที่รวมผู้ผลิต OTOP/SME ผู้บริโภค คนกลาง/ตัวแทนจำหน่าย ครีเอเตอร์ และ Affiliate ไว้ในที่เดียว พร้อมเครื่องมือ AI ช่วยขาย และระบบสมัครที่โปร่งใส ยินยอมตาม PDPA ทุกขั้นตอน</p>
   <div class="cta-row">
-    <a class="btn btn-primary" href="https://www.openthai-ai.com/portals">เริ่มสมัครเข้าร่วม</a>
-    <a class="btn btn-ghost" href="#roles">ดูว่าเหมาะกับใคร</a>
+    <a class="btn btn-primary" href="https://www.openthai-ai.com/portals" data-i18n="hero.cta1">เริ่มสมัครเข้าร่วม</a>
+    <a class="btn btn-ghost" href="#roles" data-i18n="hero.cta2">ดูว่าเหมาะกับใคร</a>
   </div>
 </div>
 
 <section id="what">
-  <h2>สิ่งที่คุณได้จริงเมื่อเข้าร่วม</h2>
-  <p class="lead">ไม่ใช่แค่สมัครแล้วรอ — ทุกใบสมัครเข้าสู่ระบบจริงทันที</p>
+  <h2 data-i18n="what.h2">สิ่งที่คุณได้จริงเมื่อเข้าร่วม</h2>
+  <p class="lead" data-i18n="what.lead">ไม่ใช่แค่สมัครแล้วรอ — ทุกใบสมัครเข้าสู่ระบบจริงทันที</p>
   <div class="grid">
-    <div class="card"><div class="icon" aria-hidden="true">🤖</div><h3>เครื่องมือ AI ช่วยขาย</h3><p>สร้างคอนเทนต์ เขียนคำโฆษณา วิเคราะห์เทรนด์ แปลภาษา และวางแผนแคมเปญ ด้วยชุดเครื่องมือ AI ของแพลตฟอร์ม</p></div>
-    <div class="card"><div class="icon" aria-hidden="true">💳</div><h3>รับเงินแบบไทย</h3><p>รองรับ PromptPay และบัตรเครดิต/เดบิตผ่าน Omise เหมาะกับผู้ซื้อผู้ขายในไทยโดยเฉพาะ</p></div>
-    <div class="card"><div class="icon" aria-hidden="true">🔐</div><h3>โปร่งใส ยินยอมตาม PDPA</h3><p>ทุกฟอร์มสมัครมีการขอความยินยอมตามกฎหมายคุ้มครองข้อมูลส่วนบุคคล ไม่มีการเก็บข้อมูลโดยไม่ได้รับอนุญาต</p></div>
-    <div class="card"><div class="icon" aria-hidden="true">🌏</div><h3>รองรับหลายภาษา</h3><p>หน้าสมัครและระบบรองรับภาษาไทย อังกฤษ และจีน เปิดทางสู่ผู้ซื้อและพันธมิตรต่างประเทศ</p></div>
+    <div class="card"><div class="icon" aria-hidden="true">🤖</div><h3 data-i18n="what.c1t">เครื่องมือ AI ช่วยขาย</h3><p data-i18n="what.c1p">สร้างคอนเทนต์ เขียนคำโฆษณา วิเคราะห์เทรนด์ แปลภาษา และวางแผนแคมเปญ ด้วยชุดเครื่องมือ AI ของแพลตฟอร์ม</p></div>
+    <div class="card"><div class="icon" aria-hidden="true">💳</div><h3 data-i18n="what.c2t">รับเงินแบบไทย</h3><p data-i18n="what.c2p">รองรับ PromptPay และบัตรเครดิต/เดบิตผ่าน Omise เหมาะกับผู้ซื้อผู้ขายในไทยโดยเฉพาะ</p></div>
+    <div class="card"><div class="icon" aria-hidden="true">🔐</div><h3 data-i18n="what.c3t">โปร่งใส ยินยอมตาม PDPA</h3><p data-i18n="what.c3p">ทุกฟอร์มสมัครมีการขอความยินยอมตามกฎหมายคุ้มครองข้อมูลส่วนบุคคล ไม่มีการเก็บข้อมูลโดยไม่ได้รับอนุญาต</p></div>
+    <div class="card"><div class="icon" aria-hidden="true">🌏</div><h3 data-i18n="what.c4t">รองรับหลายภาษา</h3><p data-i18n="what.c4p">หน้าสมัครและระบบรองรับภาษาไทย อังกฤษ และจีน เปิดทางสู่ผู้ซื้อและพันธมิตรต่างประเทศ</p></div>
   </div>
 </section>
 
 <section id="roles">
-  <h2>เข้าร่วมในบทบาทที่ใช่</h2>
-  <p class="lead">เลือกสมัครตามบทบาทของคุณ — ทุกใบสมัครถูกบันทึกเข้าระบบจริงทันที</p>
+  <h2 data-i18n="roles.h2">เข้าร่วมในบทบาทที่ใช่</h2>
+  <p class="lead" data-i18n="roles.lead">เลือกสมัครตามบทบาทของคุณ — ทุกใบสมัครถูกบันทึกเข้าระบบจริงทันที</p>
   <div class="roles">
     <div class="role-card">
       <div class="icon" aria-hidden="true">🏭</div>
-      <h3>ผู้ผลิต OTOP / SME</h3>
-      <p>ลงสินค้า ตั้งราคา จัดการสต๊อก และเข้าถึงลูกค้าทั่วประเทศ</p>
-      <a href="https://www.openthai-ai.com/portals/producer">สมัครเป็นผู้ผลิต →</a>
+      <h3 data-i18n="roles.r1t">ผู้ผลิต OTOP / SME</h3>
+      <p data-i18n="roles.r1p">ลงสินค้า ตั้งราคา จัดการสต๊อก และเข้าถึงลูกค้าทั่วประเทศ</p>
+      <a href="https://www.openthai-ai.com/portals/producer" data-i18n="roles.r1a">สมัครเป็นผู้ผลิต →</a>
     </div>
     <div class="role-card">
       <div class="icon" aria-hidden="true">🛍️</div>
-      <h3>ผู้บริโภค</h3>
-      <p>รับส่วนลดเฉพาะสมาชิกและสินค้าใหม่จากผู้ผลิตที่ผ่านการรับรอง</p>
-      <a href="https://www.openthai-ai.com/portals/consumer">สมัครเป็นผู้บริโภค →</a>
+      <h3 data-i18n="roles.r2t">ผู้บริโภค</h3>
+      <p data-i18n="roles.r2p">รับส่วนลดเฉพาะสมาชิกและสินค้าใหม่จากผู้ผลิตที่ผ่านการรับรอง</p>
+      <a href="https://www.openthai-ai.com/portals/consumer" data-i18n="roles.r2a">สมัครเป็นผู้บริโภค →</a>
     </div>
     <div class="role-card">
       <div class="icon" aria-hidden="true">🤝</div>
-      <h3>คนกลาง / ตัวแทนจำหน่าย</h3>
-      <p>ราคาส่งพิเศษและการเชื่อมต่อกับผู้ผลิตโดยตรง ไม่ผ่านคนกลางซ้ำซ้อน</p>
-      <a href="https://www.openthai-ai.com/portals/middleman">สมัครเป็นคนกลาง →</a>
+      <h3 data-i18n="roles.r3t">คนกลาง / ตัวแทนจำหน่าย</h3>
+      <p data-i18n="roles.r3p">ราคาส่งพิเศษและการเชื่อมต่อกับผู้ผลิตโดยตรง ไม่ผ่านคนกลางซ้ำซ้อน</p>
+      <a href="https://www.openthai-ai.com/portals/middleman" data-i18n="roles.r3a">สมัครเป็นคนกลาง →</a>
     </div>
     <div class="role-card">
       <div class="icon" aria-hidden="true">🎬</div>
-      <h3>ครีเอเตอร์</h3>
-      <p>ร่วมสร้างคอนเทนต์ด้วยเครื่องมือ AI จากทุกแพลตฟอร์มโซเชียล</p>
-      <a href="https://www.openthai-ai.com/portals/creator">สมัครเป็นครีเอเตอร์ →</a>
+      <h3 data-i18n="roles.r4t">ครีเอเตอร์</h3>
+      <p data-i18n="roles.r4p">ร่วมสร้างคอนเทนต์ด้วยเครื่องมือ AI จากทุกแพลตฟอร์มโซเชียล</p>
+      <a href="https://www.openthai-ai.com/portals/creator" data-i18n="roles.r4a">สมัครเป็นครีเอเตอร์ →</a>
     </div>
     <div class="role-card">
       <div class="icon" aria-hidden="true">💰</div>
-      <h3>Affiliate</h3>
-      <p>รับลิงก์ติดตามและค่าคอมมิชชันจริงจากทุกยอดขายที่ปิดผ่านลิงก์ของคุณ</p>
-      <a href="https://www.openthai-ai.com/portals/affiliate">สมัครเป็น Affiliate →</a>
+      <h3 data-i18n="roles.r5t">Affiliate</h3>
+      <p data-i18n="roles.r5p">รับลิงก์ติดตามและค่าคอมมิชชันจริงจากทุกยอดขายที่ปิดผ่านลิงก์ของคุณ</p>
+      <a href="https://www.openthai-ai.com/portals/affiliate" data-i18n="roles.r5a">สมัครเป็น Affiliate →</a>
     </div>
   </div>
 </section>
 
 <section id="how">
-  <h2>วิธีสมัคร</h2>
+  <h2 data-i18n="how.h2">วิธีสมัคร</h2>
   <div class="steps">
-    <div class="step"><div class="num">1</div><div><h3>เลือกบทบาทของคุณ</h3><p>ผู้ผลิต ผู้บริโภค คนกลาง ครีเอเตอร์ หรือ Affiliate</p></div></div>
-    <div class="step"><div class="num">2</div><div><h3>กรอกฟอร์มสมัคร</h3><p>ข้อมูลของคุณถูกบันทึกเข้าระบบจริงทันที พร้อมการยินยอมตาม PDPA</p></div></div>
-    <div class="step"><div class="num">3</div><div><h3>รับอีเมลยืนยัน</h3><p>ระบบส่งอีเมลยืนยันการสมัครทันที และทีมงานจะติดต่อกลับตามขั้นตอนของแต่ละบทบาท</p></div></div>
-    <div class="step"><div class="num">4</div><div><h3>เริ่มใช้งานแพลตฟอร์ม</h3><p>เข้าสู่ OpenThaiAi เพื่อจัดการสินค้า ติดตามยอดขาย หรือเริ่มสร้างคอนเทนต์</p></div></div>
+    <div class="step"><div class="num">1</div><div><h3 data-i18n="how.s1t">เลือกบทบาทของคุณ</h3><p data-i18n="how.s1p">ผู้ผลิต ผู้บริโภค คนกลาง ครีเอเตอร์ หรือ Affiliate</p></div></div>
+    <div class="step"><div class="num">2</div><div><h3 data-i18n="how.s2t">กรอกฟอร์มสมัคร</h3><p data-i18n="how.s2p">ข้อมูลของคุณถูกบันทึกเข้าระบบจริงทันที พร้อมการยินยอมตาม PDPA</p></div></div>
+    <div class="step"><div class="num">3</div><div><h3 data-i18n="how.s3t">รับอีเมลยืนยัน</h3><p data-i18n="how.s3p">ระบบส่งอีเมลยืนยันการสมัครทันที และทีมงานจะติดต่อกลับตามขั้นตอนของแต่ละบทบาท</p></div></div>
+    <div class="step"><div class="num">4</div><div><h3 data-i18n="how.s4t">เริ่มใช้งานแพลตฟอร์ม</h3><p data-i18n="how.s4p">เข้าสู่ OpenThaiAi เพื่อจัดการสินค้า ติดตามยอดขาย หรือเริ่มสร้างคอนเทนต์</p></div></div>
   </div>
 </section>
 
 <div class="final-cta">
-  <h2>พร้อมเข้าร่วมหรือยัง?</h2>
-  <p>สมัครวันนี้ เข้าสู่ระบบจริงทันที ไม่มีคิวรอ</p>
-  <a class="btn btn-primary" href="https://www.openthai-ai.com/portals">ไปที่หน้าสมัคร →</a>
+  <h2 data-i18n="final.h2">พร้อมเข้าร่วมหรือยัง?</h2>
+  <p data-i18n="final.p">สมัครวันนี้ เข้าสู่ระบบจริงทันที ไม่มีคิวรอ</p>
+  <a class="btn btn-primary" href="https://www.openthai-ai.com/portals" data-i18n="final.cta">ไปที่หน้าสมัคร →</a>
 </div>
 
 </main>
 
 <footer>
-  <p>© 2026 OTOP-AI · ขับเคลื่อนโดย <a href="https://www.openthai-ai.com">OpenThaiAi</a></p>
-  <p><a href="https://www.openthai-ai.com/privacy">นโยบายความเป็นส่วนตัว (PDPA)</a></p>
+  <p data-i18n-html="footer.credit">© 2026 OTOP-AI · ขับเคลื่อนโดย <a href="https://www.openthai-ai.com">OpenThaiAi</a></p>
+  <p><a href="https://www.openthai-ai.com/privacy" data-i18n="footer.privacy">นโยบายความเป็นส่วนตัว (PDPA)</a></p>
 </footer>
+
+<!-- Lightweight client-side i18n: Thai remains the static default in the HTML above (so crawlers
+     and no-JS visitors get fully-rendered Thai). The switcher re-renders text into EN/中文 and
+     remembers the choice in localStorage. No framework, no network — same local-toggle pattern the
+     OpenThaiAi portal pages use. -->
+<script>
+(function () {
+  var I18N = {
+    th: {
+      _title: "OTOP-AI × OpenThaiAi — แพลตฟอร์มเดียว ครบทุกวงจรสินค้าไทย",
+      _desc: "OTOP-AI คือทางเข้าสู่ OpenThaiAi แพลตฟอร์มที่รวมผู้ผลิต OTOP/SME ผู้บริโภค คนกลาง/ตัวแทนจำหน่าย ครีเอเตอร์ และ Affiliate ไว้ในที่เดียว พร้อมเครื่องมือ AI ช่วยขาย ระบบชำระเงินไทย และการสมัครที่โปร่งใสตาม PDPA",
+      "skip": "ข้ามไปยังเนื้อหาหลัก",
+      "nav.roles": "เข้าร่วมกับใครดี",
+      "nav.how": "วิธีสมัคร",
+      "nav.goto": "ไปที่ OpenThaiAi →",
+      "hero.h1": "สินค้าไทย <span>ครบวงจร</span> ในแพลตฟอร์มเดียว",
+      "hero.p": "OTOP-AI คือทางเข้าสู่ <strong>OpenThaiAi</strong> — แพลตฟอร์มที่รวมผู้ผลิต OTOP/SME ผู้บริโภค คนกลาง/ตัวแทนจำหน่าย ครีเอเตอร์ และ Affiliate ไว้ในที่เดียว พร้อมเครื่องมือ AI ช่วยขาย และระบบสมัครที่โปร่งใส ยินยอมตาม PDPA ทุกขั้นตอน",
+      "hero.cta1": "เริ่มสมัครเข้าร่วม",
+      "hero.cta2": "ดูว่าเหมาะกับใคร",
+      "what.h2": "สิ่งที่คุณได้จริงเมื่อเข้าร่วม",
+      "what.lead": "ไม่ใช่แค่สมัครแล้วรอ — ทุกใบสมัครเข้าสู่ระบบจริงทันที",
+      "what.c1t": "เครื่องมือ AI ช่วยขาย",
+      "what.c1p": "สร้างคอนเทนต์ เขียนคำโฆษณา วิเคราะห์เทรนด์ แปลภาษา และวางแผนแคมเปญ ด้วยชุดเครื่องมือ AI ของแพลตฟอร์ม",
+      "what.c2t": "รับเงินแบบไทย",
+      "what.c2p": "รองรับ PromptPay และบัตรเครดิต/เดบิตผ่าน Omise เหมาะกับผู้ซื้อผู้ขายในไทยโดยเฉพาะ",
+      "what.c3t": "โปร่งใส ยินยอมตาม PDPA",
+      "what.c3p": "ทุกฟอร์มสมัครมีการขอความยินยอมตามกฎหมายคุ้มครองข้อมูลส่วนบุคคล ไม่มีการเก็บข้อมูลโดยไม่ได้รับอนุญาต",
+      "what.c4t": "รองรับหลายภาษา",
+      "what.c4p": "หน้าสมัครและระบบรองรับภาษาไทย อังกฤษ และจีน เปิดทางสู่ผู้ซื้อและพันธมิตรต่างประเทศ",
+      "roles.h2": "เข้าร่วมในบทบาทที่ใช่",
+      "roles.lead": "เลือกสมัครตามบทบาทของคุณ — ทุกใบสมัครถูกบันทึกเข้าระบบจริงทันที",
+      "roles.r1t": "ผู้ผลิต OTOP / SME",
+      "roles.r1p": "ลงสินค้า ตั้งราคา จัดการสต๊อก และเข้าถึงลูกค้าทั่วประเทศ",
+      "roles.r1a": "สมัครเป็นผู้ผลิต →",
+      "roles.r2t": "ผู้บริโภค",
+      "roles.r2p": "รับส่วนลดเฉพาะสมาชิกและสินค้าใหม่จากผู้ผลิตที่ผ่านการรับรอง",
+      "roles.r2a": "สมัครเป็นผู้บริโภค →",
+      "roles.r3t": "คนกลาง / ตัวแทนจำหน่าย",
+      "roles.r3p": "ราคาส่งพิเศษและการเชื่อมต่อกับผู้ผลิตโดยตรง ไม่ผ่านคนกลางซ้ำซ้อน",
+      "roles.r3a": "สมัครเป็นคนกลาง →",
+      "roles.r4t": "ครีเอเตอร์",
+      "roles.r4p": "ร่วมสร้างคอนเทนต์ด้วยเครื่องมือ AI จากทุกแพลตฟอร์มโซเชียล",
+      "roles.r4a": "สมัครเป็นครีเอเตอร์ →",
+      "roles.r5t": "Affiliate",
+      "roles.r5p": "รับลิงก์ติดตามและค่าคอมมิชชันจริงจากทุกยอดขายที่ปิดผ่านลิงก์ของคุณ",
+      "roles.r5a": "สมัครเป็น Affiliate →",
+      "how.h2": "วิธีสมัคร",
+      "how.s1t": "เลือกบทบาทของคุณ",
+      "how.s1p": "ผู้ผลิต ผู้บริโภค คนกลาง ครีเอเตอร์ หรือ Affiliate",
+      "how.s2t": "กรอกฟอร์มสมัคร",
+      "how.s2p": "ข้อมูลของคุณถูกบันทึกเข้าระบบจริงทันที พร้อมการยินยอมตาม PDPA",
+      "how.s3t": "รับอีเมลยืนยัน",
+      "how.s3p": "ระบบส่งอีเมลยืนยันการสมัครทันที และทีมงานจะติดต่อกลับตามขั้นตอนของแต่ละบทบาท",
+      "how.s4t": "เริ่มใช้งานแพลตฟอร์ม",
+      "how.s4p": "เข้าสู่ OpenThaiAi เพื่อจัดการสินค้า ติดตามยอดขาย หรือเริ่มสร้างคอนเทนต์",
+      "final.h2": "พร้อมเข้าร่วมหรือยัง?",
+      "final.p": "สมัครวันนี้ เข้าสู่ระบบจริงทันที ไม่มีคิวรอ",
+      "final.cta": "ไปที่หน้าสมัคร →",
+      "footer.credit": "© 2026 OTOP-AI · ขับเคลื่อนโดย <a href=\"https://www.openthai-ai.com\">OpenThaiAi</a>",
+      "footer.privacy": "นโยบายความเป็นส่วนตัว (PDPA)"
+    },
+    en: {
+      _title: "OTOP-AI × OpenThaiAi — One platform for Thai products, end to end",
+      _desc: "OTOP-AI is your gateway to OpenThaiAi — one platform uniting OTOP/SME producers, consumers, distributors/agents, creators, and affiliates, with AI selling tools, Thai payment, and transparent PDPA-compliant signup.",
+      "skip": "Skip to main content",
+      "nav.roles": "Who can join",
+      "nav.how": "How to join",
+      "nav.goto": "Go to OpenThaiAi →",
+      "hero.h1": "Thai products, <span>end to end</span>, on one platform",
+      "hero.p": "OTOP-AI is your gateway to <strong>OpenThaiAi</strong> — one platform bringing together OTOP/SME producers, consumers, distributors/agents, creators, and affiliates, with AI selling tools and a transparent, PDPA-compliant signup at every step.",
+      "hero.cta1": "Start your application",
+      "hero.cta2": "See who it's for",
+      "what.h2": "What you actually get",
+      "what.lead": "Not just apply and wait — every application enters the real system instantly.",
+      "what.c1t": "AI selling tools",
+      "what.c1p": "Create content, write ad copy, analyze trends, translate, and plan campaigns with the platform's AI toolkit.",
+      "what.c2t": "Get paid the Thai way",
+      "what.c2p": "Supports PromptPay and credit/debit cards via Omise — built for Thai buyers and sellers.",
+      "what.c3t": "Transparent, PDPA-compliant consent",
+      "what.c3p": "Every signup form asks for consent under the personal data protection law — no data is collected without permission.",
+      "what.c4t": "Multilingual support",
+      "what.c4p": "Signup pages and the system support Thai, English, and Chinese — opening the door to overseas buyers and partners.",
+      "roles.h2": "Join in the role that fits",
+      "roles.lead": "Apply by your role — every application is saved to the real system instantly.",
+      "roles.r1t": "OTOP / SME producer",
+      "roles.r1p": "List products, set prices, manage stock, and reach customers nationwide.",
+      "roles.r1a": "Apply as a producer →",
+      "roles.r2t": "Consumer",
+      "roles.r2p": "Get member-only discounts and new products from verified producers.",
+      "roles.r2a": "Apply as a consumer →",
+      "roles.r3t": "Distributor / agent",
+      "roles.r3p": "Special wholesale prices and a direct link to producers — no extra middlemen.",
+      "roles.r3a": "Apply as a distributor →",
+      "roles.r4t": "Creator",
+      "roles.r4p": "Co-create content with AI tools across every social platform.",
+      "roles.r4a": "Apply as a creator →",
+      "roles.r5t": "Affiliate",
+      "roles.r5p": "Get a tracking link and real commission on every sale closed through your link.",
+      "roles.r5a": "Apply as an affiliate →",
+      "how.h2": "How to join",
+      "how.s1t": "Choose your role",
+      "how.s1p": "Producer, consumer, distributor, creator, or affiliate.",
+      "how.s2t": "Fill in the application form",
+      "how.s2p": "Your details are saved to the real system instantly, with PDPA consent.",
+      "how.s3t": "Get a confirmation email",
+      "how.s3p": "The system sends a confirmation email right away, and the team follows up per each role's process.",
+      "how.s4t": "Start using the platform",
+      "how.s4p": "Enter OpenThaiAi to manage products, track sales, or start creating content.",
+      "final.h2": "Ready to join?",
+      "final.p": "Apply today and enter the real system instantly — no waiting queue.",
+      "final.cta": "Go to the signup page →",
+      "footer.credit": "© 2026 OTOP-AI · Powered by <a href=\"https://www.openthai-ai.com\">OpenThaiAi</a>",
+      "footer.privacy": "Privacy Policy (PDPA)"
+    },
+    zh: {
+      _title: "OTOP-AI × OpenThaiAi — 一个平台，覆盖泰国商品全流程",
+      _desc: "OTOP-AI 是通往 OpenThaiAi 的入口——一个汇聚 OTOP/中小企业生产者、消费者、中间商/代理商、创作者与联盟推广者的平台，配备 AI 销售工具、泰国本地支付以及透明、符合 PDPA 的注册流程。",
+      "skip": "跳至主要内容",
+      "nav.roles": "适合谁加入",
+      "nav.how": "如何申请",
+      "nav.goto": "前往 OpenThaiAi →",
+      "hero.h1": "泰国商品 <span>一站式</span> 尽在一个平台",
+      "hero.p": "OTOP-AI 是通往 <strong>OpenThaiAi</strong> 的入口——一个将 OTOP/中小企业生产者、消费者、中间商/代理商、创作者和联盟推广者聚合在一起的平台，配备 AI 销售工具，且每一步注册都透明并符合 PDPA 个人数据保护法。",
+      "hero.cta1": "开始申请加入",
+      "hero.cta2": "看看适合谁",
+      "what.h2": "加入后你真正获得的",
+      "what.lead": "不是申请后干等——每份申请都立即进入真实系统。",
+      "what.c1t": "AI 销售工具",
+      "what.c1p": "使用平台的 AI 工具套件创作内容、撰写广告文案、分析趋势、翻译并策划营销活动。",
+      "what.c2t": "本地化收款",
+      "what.c2p": "通过 Omise 支持 PromptPay 与信用卡/借记卡——专为泰国买家和卖家打造。",
+      "what.c3t": "透明，符合 PDPA 授权",
+      "what.c3p": "每份注册表单都依据个人数据保护法征求授权——绝不在未经许可下收集数据。",
+      "what.c4t": "多语言支持",
+      "what.c4p": "注册页面与系统支持泰文、英文和中文——为海外买家和合作伙伴打开大门。",
+      "roles.h2": "以适合你的角色加入",
+      "roles.lead": "按你的角色申请——每份申请都立即保存到真实系统。",
+      "roles.r1t": "OTOP / 中小企业生产者",
+      "roles.r1p": "上架商品、定价、管理库存，触达全国客户。",
+      "roles.r1a": "申请成为生产者 →",
+      "roles.r2t": "消费者",
+      "roles.r2p": "获取会员专属折扣与来自认证生产者的新品。",
+      "roles.r2a": "申请成为消费者 →",
+      "roles.r3t": "中间商 / 代理商",
+      "roles.r3p": "特别批发价，直接对接生产者——不经多层中间商。",
+      "roles.r3a": "申请成为中间商 →",
+      "roles.r4t": "创作者",
+      "roles.r4p": "借助 AI 工具在各大社交平台共创内容。",
+      "roles.r4a": "申请成为创作者 →",
+      "roles.r5t": "联盟推广",
+      "roles.r5p": "获取追踪链接，并从经你链接成交的每笔销售获得真实佣金。",
+      "roles.r5a": "申请成为联盟推广 →",
+      "how.h2": "如何申请",
+      "how.s1t": "选择你的角色",
+      "how.s1p": "生产者、消费者、中间商、创作者或联盟推广。",
+      "how.s2t": "填写申请表单",
+      "how.s2p": "你的信息立即保存到真实系统，并附 PDPA 授权。",
+      "how.s3t": "收到确认邮件",
+      "how.s3p": "系统即时发送确认邮件，团队将按各角色流程跟进。",
+      "how.s4t": "开始使用平台",
+      "how.s4p": "进入 OpenThaiAi 管理商品、追踪销售或开始创作内容。",
+      "final.h2": "准备好加入了吗？",
+      "final.p": "今天就申请，立即进入真实系统——无需排队。",
+      "final.cta": "前往注册页面 →",
+      "footer.credit": "© 2026 OTOP-AI · 由 <a href=\"https://www.openthai-ai.com\">OpenThaiAi</a> 提供支持",
+      "footer.privacy": "隐私政策 (PDPA)"
+    }
+  };
+
+  var LANGS = { th: "th", en: "en", zh: "zh" };
+  var buttons = document.querySelectorAll(".lang-switch button");
+
+  function applyLang(lang) {
+    if (!LANGS[lang]) lang = "th";
+    var dict = I18N[lang];
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      var k = el.getAttribute("data-i18n");
+      if (dict[k] != null) el.textContent = dict[k];
+    });
+    document.querySelectorAll("[data-i18n-html]").forEach(function (el) {
+      var k = el.getAttribute("data-i18n-html");
+      if (dict[k] != null) el.innerHTML = dict[k];
+    });
+    document.documentElement.lang = lang === "zh" ? "zh-Hans" : lang;
+    if (dict._title) document.title = dict._title;
+    var md = document.querySelector('meta[name="description"]');
+    if (md && dict._desc) md.setAttribute("content", dict._desc);
+    buttons.forEach(function (b) {
+      b.setAttribute("aria-pressed", b.getAttribute("data-lang") === lang ? "true" : "false");
+    });
+    try { localStorage.setItem("otopai_lang", lang); } catch (e) {}
+  }
+
+  var saved = "th";
+  try { saved = localStorage.getItem("otopai_lang") || "th"; } catch (e) {}
+  buttons.forEach(function (b) {
+    b.addEventListener("click", function () { applyLang(b.getAttribute("data-lang")); });
+  });
+  applyLang(saved);
+})();
+</script>
 
 </body>
 </html>
